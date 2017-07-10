@@ -7,7 +7,7 @@
  * @license    http://opensource.org/licenses/MIT
  */
 
-namespace Agit\MultilangBundle;
+namespace Agit\ImagesBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
