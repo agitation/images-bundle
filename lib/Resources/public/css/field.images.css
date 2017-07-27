@@ -1,0 +1,24 @@
+.images-field                                                           { display: flex; }
+.images-field .box                                                      { border-radius: 2px; }
+.images-field > *                                                       { display: flex; justify-content: center; align-items: center; color: #888 }
+
+.images-field input                                                     { display: none; }
+
+.images-field .thumbs                                                   { margin-right: 10px; justify-content: flex-start; align-items: flex-start; align-content: flex-start; flex-wrap: wrap; }
+.images-field .thumbs:empty                                             { display: none }
+
+.images-field .thumb                                                    { margin: 0 5px 5px 0; height: 115px; border: 1px solid #999; background: #ccc; }
+
+.images-field .thumb .image                                             { height: 90px; width: 90px; display: flex; justify-content: center; align-items: center; }
+.images-field .thumb .spinner                                           { width: 30px; height: 30px; margin-top: 23px }
+
+.images-field .thumb .ops                                               { background: #fff; text-align: center; }
+.images-field .thumb .ops span                                          { border-right: 1px solid #eee; height: 23px; width: 30px; font-size: 14px; line-height: 23px; cursor: pointer; }
+.images-field .thumb .ops span.remove                                   { color: #b00; border-right: 0 }
+
+.images-field .thumb:not(.processing) .spinner,
+.images-field .thumb.processing .preview,
+.images-field .thumb.processing .ops                                    { display: none }
+
+.images-field .add                                                      { width: 90px; height: 115px; border: 1px solid #bbb; cursor: pointer; flex-shrink: 0 }
+.images-field .add span                                                 { font-size: 30px; }

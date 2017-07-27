@@ -1,0 +1,13 @@
+services:
+    agit.images.validator:
+        private: true
+        class: Agit\ImagesBundle\EntityConstraint\ImageValidator
+        arguments: [ "@agit.validation" ]
+        tags: [{ name: validator.constraint_validator, alias: image }]
+
+    agit.validator.images:
+        private: true
+        parent: agit.validator
+        class: Agit\ImagesBundle\Service\ImageValidator
+        arguments: [ "@agit.validator.integer", "@agit.validator.selection" ]
+        tags: [{ name: agit.validator, id: image }]
