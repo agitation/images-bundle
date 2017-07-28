@@ -1,4 +1,4 @@
-<template id="agitadmin-images-field">
+<template id="agit-images-admin-field">
     <div class="images-field">
         <input type="file" multiple accept="image/*">
 
@@ -12,12 +12,13 @@
     <div class="thumb box processing">
         <div class="image">
             <div class="spinner"></div>
-            <canvas class="preview" height="80" width="80"></canvas>
+            <canvas class="preview" height="110" width="110"></canvas>
         </div>
 
         <div class="ops">
             <span class="fa fa-search enlarge" title="{{ t("show large preview") }}"></span>
             <span class="fa fa-rotate-right rotate" title="{{ t("rotate right by 90 degrees") }}"></span>
+            <span class="fa fa-comment desc" title="{{ t("edit description") }}"></span>
             <span class="fa fa-remove remove" title="{{ t("remove image") }}"></span>
         </div>
     </div>
@@ -25,4 +26,6 @@
     <div class="large-image">
         <img src="" alt="">
     </div>
+
+    <span class="modal-header">{{ t("Image description") }}</span>
 </template>
