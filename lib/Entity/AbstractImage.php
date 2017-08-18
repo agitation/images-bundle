@@ -61,7 +61,7 @@ abstract class AbstractImage implements ImageInterface
     private $height;
 
     /**
-     * @ORM\Column(type="string", length=40, unique=true)
+     * @ORM\Column(type="string", length=40)
      *
      * Do not set this, it will be determined automatically.
      */
