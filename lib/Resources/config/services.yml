@@ -5,6 +5,19 @@ services:
         arguments: [ "@agit.validation" ]
         tags: [{ name: validator.constraint_validator, alias: image }]
 
+    # template definition, see dummy below for usage example
+    # TODO: This approach allows only one bundle to register image class aliases.
+    agit.images._loader:
+        abstract : true
+        class: Agit\ImagesBundle\Service\ImageLoader
+        arguments: [ "@doctrine.orm.entity_manager", "@router", "@agit.common.url" ]
+
+    # dummy definition, override it in your implementation
+    agit.images.loader:
+        parent: agit.images._loader
+        calls:
+             - [ setTypes, [ { foo : bar } ] ]
+
     agit.validator.images:
         private: true
         parent: agit.validator

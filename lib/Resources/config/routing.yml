@@ -1,0 +1,3 @@
+image:
+    path:     /{type}/{id}.{extension}
+    defaults: { _controller: AgitImagesBundle:Image:get }
