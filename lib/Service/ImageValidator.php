@@ -1,21 +1,20 @@
 <?php
 
 /*
- * @package    agitation/multilang-bundle
- * @link       http://github.com/agitation/multilang-bundle
+ * @package    agitation/images-bundle
+ * @link       http://github.com/agitation/images-bundle
  * @author     Alexander Günsche
  * @license    http://opensource.org/licenses/MIT
  */
 
 namespace Agit\ImagesBundle\Service;
 
-use Exception;
+use Agit\ImagesBundle\Exception\BadImageException;
 use Agit\IntlBundle\Tool\Translate;
-use Agit\ValidationBundle\Exception\InvalidValueException;
 use Agit\ValidationBundle\Validator\AbstractValidator;
 use Agit\ValidationBundle\Validator\IntegerValidator;
 use Agit\ValidationBundle\Validator\SelectionValidator;
-use Agit\ImagesBundle\Exception\BadImageException;
+use Exception;
 
 class ImageValidator extends AbstractValidator
 {

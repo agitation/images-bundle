@@ -1,9 +1,10 @@
 <?php
 
 /*
- * @package    tixys/common-bundle
+ * @package    agitation/images-bundle
+ * @link       http://github.com/agitation/images-bundle
  * @author     Alexander Günsche
- * @copyright  (C) 2017 AGITsol GmbH
+ * @license    http://opensource.org/licenses/MIT
  */
 
 namespace Agit\ImagesBundle\Entity;
@@ -35,22 +36,22 @@ interface ImageInterface
     public function getDescription();
 
     /**
-     * @return integer
+     * @return int
      */
     public function getType();
 
     /**
-     * @return integer
+     * @return int
      */
     public function getHeight();
 
     /**
-     * @return integer
+     * @return int
      */
     public function getWidth();
 
     /**
-     * @return integer
+     * @return int
      */
     public function getFingerprint();
 }

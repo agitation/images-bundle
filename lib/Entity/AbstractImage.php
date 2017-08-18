@@ -1,27 +1,24 @@
 <?php
 
 /*
- * @package    agitation/multilang-bundle
- * @link       http://github.com/agitation/multilang-bundle
+ * @package    agitation/images-bundle
+ * @link       http://github.com/agitation/images-bundle
  * @author     Alexander Günsche
  * @license    http://opensource.org/licenses/MIT
  */
 
 namespace Agit\ImagesBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Agit\BaseBundle\Entity\GeneratedIdentityAwareTrait;
 use Agit\ImagesBundle\EntityConstraint\Image;
 use Agit\ImagesBundle\Service\ImageProcessor;
+use Agit\MultilangBundle\EntityConstraint\Multilang;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * This is only a trait, and not an entity class, because the entity will need the ManyToOne reference to the parent object.
- * IMPORTANT: You must add the $data and $description properties. See below for examples.
- *
- *
- *
+ * @ORM\MappedSuperclass
  */
-trait ImageTrait
+abstract class AbstractImage implements ImageInterface
 {
     use GeneratedIdentityAwareTrait;
 
@@ -30,20 +27,17 @@ trait ImageTrait
         return Translate::t("Image");
     }
 
-    /// the following could be used as defaults if PHP would allow overriding them in the class.
+    /**
+     * @ORM\Column(type="text")
+     * @Image(minWidth=300, maxWidth=500, minHeight=300, maxHeight=500, types={"image/jpeg"})
+     */
+    protected $data;
 
-    // /**
-    //  * @ORM\Column(type="text")
-    //  * @Image(minWidth=300, maxWidth=500, minHeight=300, maxHeight=500, types={"image/jpeg"})
-    //  */
-    // protected $data;
-    //
-    // /**
-    //  * @ORM\Column(type="text")
-    //  * @Multilang(maxLength=150)
-    //  */
-    // protected $description;
-
+    /**
+     * @ORM\Column(type="text")
+     * @Multilang(maxLength=150)
+     */
+    protected $description;
 
     /**
      * @ORM\Column(type="smallint")
@@ -67,14 +61,14 @@ trait ImageTrait
     private $height;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, unique=true)
      *
      * Do not set this, it will be determined automatically.
      */
     private $fingerprint;
 
     /**
-     * Set data
+     * Set data.
      *
      * @param string $data
      *
@@ -88,7 +82,7 @@ trait ImageTrait
     }
 
     /**
-     * Get data
+     * Get data.
      *
      * @return string
      */
@@ -98,7 +92,7 @@ trait ImageTrait
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -112,7 +106,7 @@ trait ImageTrait
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -122,9 +116,9 @@ trait ImageTrait
     }
 
     /**
-     * Get type
+     * Get type.
      *
-     * @return integer
+     * @return int
      */
     public function getType()
     {
@@ -132,9 +126,9 @@ trait ImageTrait
     }
 
     /**
-     * Get width
+     * Get width.
      *
-     * @return integer
+     * @return int
      */
     public function getWidth()
     {
@@ -142,9 +136,9 @@ trait ImageTrait
     }
 
     /**
-     * Get height
+     * Get height.
      *
-     * @return integer
+     * @return int
      */
     public function getHeight()
     {
@@ -152,7 +146,7 @@ trait ImageTrait
     }
 
     /**
-     * Get fingerprint
+     * Get fingerprint.
      *
      * @return string
      */

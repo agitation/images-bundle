@@ -1,15 +1,13 @@
 <?php
 
 /*
- * @package    agitation/multilang-bundle
- * @link       http://github.com/agitation/multilang-bundle
+ * @package    agitation/images-bundle
+ * @link       http://github.com/agitation/images-bundle
  * @author     Alexander Günsche
  * @license    http://opensource.org/licenses/MIT
  */
 
 namespace Agit\ImagesBundle\Api\Annotation;
-
-use Agit\ApiBundle\Annotation\Property\ObjectListType;
 
 /**
  * @Annotation

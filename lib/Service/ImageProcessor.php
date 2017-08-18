@@ -1,57 +1,58 @@
 <?php
 
 /*
- * @package    agitation/multilang-bundle
- * @link       http://github.com/agitation/multilang-bundle
+ * @package    agitation/images-bundle
+ * @link       http://github.com/agitation/images-bundle
  * @author     Alexander Günsche
  * @license    http://opensource.org/licenses/MIT
  */
 
 namespace Agit\ImagesBundle\Service;
 
-use Exception;
-use Imagick;
 use Agit\ImagesBundle\Exception\BadImageException;
 use Agit\IntlBundle\Tool\Translate;
+use Exception;
+use Imagick;
 
 class ImageProcessor
 {
     // we store the data of already calculated images so we don’t have to process them multiple times
     private static $cache = [];
 
-    /**
-     * @param $image Base64 encoded image data
-     */
+     /**
+      * @param $image Base64 encoded image data
+      */
      public static function getImageMeta($image)
-    {
-        if (!is_string($image))
-            throw new BadImageException(Translate::t("The value is expected to be a base64-encoded image blob."));
+     {
+         if (! is_string($image)) {
+             throw new BadImageException(Translate::t("The value is expected to be a base64-encoded image blob."));
+         }
 
-        $fp = self::createFingerprint($image);
+         $fp = self::createFingerprint($image);
 
-        if (!isset(self::$cache[$fp]))
-        {
-            try {
-                $blob = base64_decode($image);
-                $imgdata = @getimagesizefromstring($blob);
-            } catch (Exception $e) {
-                throw new BadImageException(Translate::t("The value is expected to be a base64-encoded image blob."));
-            }
+         if (! isset(self::$cache[$fp])) {
+             try {
+                 $blob = base64_decode($image);
+                 $imgdata = @getimagesizefromstring($blob);
+             } catch (Exception $e) {
+                 throw new BadImageException(Translate::t("The value is expected to be a base64-encoded image blob."));
+             }
 
-            if (!$imgdata)
-                throw new BadImageException(Translate::t("The value is expected to be a base64-encoded image blob."));
+             if (! $imgdata) {
+                 throw new BadImageException(Translate::t("The value is expected to be a base64-encoded image blob."));
+             }
 
-            self::$cache[$fp] = [
+             self::$cache[$fp] = [
                 "fingerprint" => $fp,
-                "width" => $imgdata[0],
-                "height" => $imgdata[1],
-                "type" => $imgdata[2],
-                "blob" => $blob
+                "width"       => $imgdata[0],
+                "height"      => $imgdata[1],
+                "type"        => $imgdata[2],
+                "blob"        => $blob
             ];
-        }
+         }
 
-        return self::$cache[$fp];
-    }
+         return self::$cache[$fp];
+     }
 
     public static function stripImage($image)
     {
@@ -67,7 +68,7 @@ class ImageProcessor
 
         self::$cache[$fp] = [
             "fingerprint" => $fp,
-            "blob" => $newBlob
+            "blob"        => $newBlob
         ] + $meta;
 
         return $newImage;
