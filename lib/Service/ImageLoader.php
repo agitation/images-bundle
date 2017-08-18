@@ -52,9 +52,9 @@ class ImageLoader
         $this->urlService = $urlService;
     }
 
-    public function setTypes(array $types)
+    public function addType($alias, $entityClass)
     {
-        $this->types = $types;
+        $this->types[$alias] = $entityClass;
     }
 
     public function getImage($type, $id)
