@@ -95,6 +95,6 @@ class ImageLoader
             "extension" => image_type_to_extension($image->getType(), false)
         ]);
 
-        return $this->urlService->createAppUrl($path, ["fp" => $image->getFingerprint()]);
+        return $this->urlService->createAppUrl($path, ["fp" => substr($image->getFingerprint(), 0, 6)]);
     }
 }
