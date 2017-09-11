@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/images-bundle
  * @link       http://github.com/agitation/images-bundle
@@ -24,10 +24,10 @@ class Image extends Constraint
 
     public $maxHeight = null;
 
-    public $types = ["image/png", "image/jpeg"];
+    public $types = ['image/png', 'image/jpeg'];
 
     public function validatedBy()
     {
-        return "image";
+        return 'image';
     }
 }

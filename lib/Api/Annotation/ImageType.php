@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/images-bundle
  * @link       http://github.com/agitation/images-bundle
@@ -16,7 +16,7 @@ use Agit\ApiBundle\Annotation\Property\ObjectType;
  */
 class ImageType extends ObjectType
 {
-    protected $class = "Image";
+    protected $class = 'Image';
 
     protected $minHeight = null;
 
@@ -26,7 +26,7 @@ class ImageType extends ObjectType
 
     protected $maxWidth = null;
 
-    protected $types = ["image/png", "image/jpeg"];
+    protected $types = ['image/png', 'image/jpeg'];
 
     protected $_isObjectType = true;
 
@@ -35,7 +35,7 @@ class ImageType extends ObjectType
         parent::checkValue($value);
 
         static::$_validator->validate(
-            "image",
+            'image',
             $value->data,
             $this->minWidth,
             $this->maxWidth,

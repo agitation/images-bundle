@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/images-bundle
  * @link       http://github.com/agitation/images-bundle
@@ -21,11 +21,6 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractImage implements ImageInterface
 {
     use GeneratedIdentityAwareTrait;
-
-    public static function getEntityClassName()
-    {
-        return Translate::t("Image");
-    }
 
     /**
      * @ORM\Column(type="text")
@@ -66,6 +61,11 @@ abstract class AbstractImage implements ImageInterface
      * Do not set this, it will be determined automatically.
      */
     private $fingerprint;
+
+    public static function getEntityClassName()
+    {
+        return Translate::t('Image');
+    }
 
     /**
      * Set data.
@@ -168,9 +168,9 @@ abstract class AbstractImage implements ImageInterface
         $meta = ImageProcessor::getImageMeta($data);
 
         $this->data = $data;
-        $this->fingerprint = $meta["fingerprint"];
-        $this->width = $meta["width"];
-        $this->height = $meta["height"];
-        $this->type = $meta["type"];
+        $this->fingerprint = $meta['fingerprint'];
+        $this->width = $meta['width'];
+        $this->height = $meta['height'];
+        $this->type = $meta['type'];
     }
 }

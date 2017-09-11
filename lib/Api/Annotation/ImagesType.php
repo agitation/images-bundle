@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/images-bundle
  * @link       http://github.com/agitation/images-bundle
@@ -24,10 +24,12 @@ class ImagesType extends ImageType
     {
         $this->init($value);
 
-        if ($this->mustCheck()) {
+        if ($this->mustCheck())
+        {
             static::$_validator->validate('array', $value, $this->minCount, $this->maxCount);
 
-            foreach ($value as $val) {
+            foreach ($value as $val)
+            {
                 $this->checkValue($val);
             }
         }

@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/images-bundle
  * @link       http://github.com/agitation/images-bundle
@@ -59,14 +59,16 @@ class ImageLoader
 
     public function getImage($type, $id)
     {
-        if (! isset($this->types[$type])) {
-            throw new BadRequestHttpException("Unknown image type.");
+        if (! isset($this->types[$type]))
+        {
+            throw new BadRequestHttpException('Unknown image type.');
         }
 
         $image = $this->entityManager->find($this->types[$type], $id);
 
-        if (! $image) {
-            throw new NotFoundHttpException("Image not found.");
+        if (! $image)
+        {
+            throw new NotFoundHttpException('Image not found.');
         }
 
         return $image;
@@ -76,25 +78,29 @@ class ImageLoader
     {
         $type = null;
 
-        foreach ($this->types as $t => $iface) {
+        foreach ($this->types as $t => $iface)
+        {
             $name = $this->entityManager->getClassMetadata($iface)->getName();
 
-            if ($image instanceof $name) {
+            if ($image instanceof $name)
+            {
                 $type = $t;
+
                 break;
             }
         }
 
-        if (! $type) {
-            throw new InternalErrorException(sprintf("The type alias for images of class %s could not be determined.", get_class($image)));
+        if (! $type)
+        {
+            throw new InternalErrorException(sprintf('The type alias for images of class %s could not be determined.', get_class($image)));
         }
 
-        $path = $this->router->generate("image", [
-            "type"      => $type,
-            "id"        => $image->getId(),
-            "extension" => image_type_to_extension($image->getType(), false)
+        $path = $this->router->generate('image', [
+            'type' => $type,
+            'id' => $image->getId(),
+            'extension' => image_type_to_extension($image->getType(), false)
         ]);
 
-        return $this->urlService->createAppUrl($path, ["fp" => substr($image->getFingerprint(), 0, 6)]);
+        return $this->urlService->createAppUrl($path, ['fp' => substr($image->getFingerprint(), 0, 6)]);
     }
 }
