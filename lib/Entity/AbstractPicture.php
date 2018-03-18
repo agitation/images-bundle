@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Agit\ImagesBundle\Entity;
 
 use Agit\BaseBundle\Entity\GeneratedIdentityAwareTrait;
-use Agit\ImagesBundle\EntityConstraint\Image;
+use Agit\ImagesBundle\EntityConstraint\Picture;
 use Agit\ImagesBundle\Service\ImageProcessor;
 use Agit\MultilangBundle\EntityConstraint\Multilang;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,13 +18,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\MappedSuperclass
  */
-abstract class AbstractImage implements ImageInterface
+abstract class AbstractPicture implements PictureInterface
 {
     use GeneratedIdentityAwareTrait;
 
     /**
      * @ORM\Column(type="text")
-     * @Image(minWidth=300, maxWidth=500, minHeight=300, maxHeight=500, types={"image/jpeg"})
+     * @Picture(minWidth=300, maxWidth=500, minHeight=300, maxHeight=500, types={"image/jpeg"})
      */
     protected $data;
 
@@ -64,7 +64,7 @@ abstract class AbstractImage implements ImageInterface
 
     public static function getEntityClassName()
     {
-        return Translate::t('Image');
+        return Translate::t('Picture');
     }
 
     /**
@@ -72,7 +72,7 @@ abstract class AbstractImage implements ImageInterface
      *
      * @param string $data
      *
-     * @return Image
+     * @return Picture
      */
     public function setData($data)
     {
@@ -96,7 +96,7 @@ abstract class AbstractImage implements ImageInterface
      *
      * @param string $description
      *
-     * @return Image
+     * @return Picture
      */
     public function setDescription($description)
     {

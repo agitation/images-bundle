@@ -34,25 +34,28 @@ class ImageValidator extends AbstractValidator
         $this->selectionValidator = $selectionValidator;
     }
 
-    public function validate($value, $minWidth = null, $maxWidth = null, $minHeight = null, $maxHeight = null, $types = [])
+    public function validate($value, $minWidth = null, $maxWidth = null, $minHeight = null, $maxHeight = null, $types = [], $maxSize = 500000)
     {
-        $meta = ImageProcessor::getImageMeta($value);
+        if (!is_string($value))
+            throw new BadImageException("String expected!");
+
+        if (strlen($value) > $maxSize)
+            throw new BadImageException(sprintf(Translate::t("The image must not be larger than %s bytes."), $maxSize));
 
         try
         {
+            $meta = ImageProcessor::getImageMeta($value);
             $this->integerValidator->validate($meta['width'], $minWidth, $maxWidth);
             $this->integerValidator->validate($meta['height'], $minHeight, $maxHeight);
         }
         catch (Exception $e)
         {
             throw new BadImageException(sprintf(
-                Translate::t('The image is expected to have a width of between %d and %d pixels and a height of between %d and %d pixels. But the image is actually %d pixels wide and %d pixels high.'),
+                Translate::t('The image must have a width of between %s and %s pixels and a height of between %s and %s pixels.'),
                 $minWidth,
                 $maxWidth,
                 $minHeight,
-                $maxHeight,
-                $meta['width'],
-                $meta['height']
+                $maxHeight
             ));
         }
 

@@ -26,7 +26,7 @@ class ImageProcessor
     {
         if (! is_string($image))
         {
-            throw new BadImageException(Translate::t('The value is expected to be a base64-encoded image blob.'));
+            throw new BadImageException('The value is expected to be a base64-encoded image blob.');
         }
 
         $fp = self::createFingerprint($image);
@@ -40,12 +40,12 @@ class ImageProcessor
             }
             catch (Exception $e)
             {
-                throw new BadImageException(Translate::t('The value is expected to be a base64-encoded image blob.'));
+                throw new BadImageException('The value is expected to be a base64-encoded image blob.');
             }
 
             if (! $imgdata)
             {
-                throw new BadImageException(Translate::t('The value is expected to be a base64-encoded image blob.'));
+                throw new BadImageException('The value is expected to be a base64-encoded image blob.');
             }
 
             self::$cache[$fp] = [

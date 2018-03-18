@@ -9,19 +9,19 @@ declare(strict_types=1);
 
 namespace Agit\ImagesBundle\Entity;
 
-interface ImageInterface
+interface PictureInterface
 {
     /**
      * @param string $data base64 image data
      *
-     * @return ImageInterface
+     * @return PictureInterface
      */
     public function setData($data);
 
     /**
      * @param string $description
      *
-     * @return ImageInterface
+     * @return PictureInterface
      */
     public function setDescription($description);
 

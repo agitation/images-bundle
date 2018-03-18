@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class Image extends Constraint
+class Picture extends Constraint
 {
     public $minWidth = null;
 
@@ -28,6 +28,6 @@ class Image extends Constraint
 
     public function validatedBy()
     {
-        return 'image';
+        return 'picture';
     }
 }

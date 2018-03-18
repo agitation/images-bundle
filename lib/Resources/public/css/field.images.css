@@ -1,25 +1,38 @@
-.images-field                                                           { display: flex; }
-.images-field .box                                                      { border-radius: 2px; }
-.images-field > *                                                       { display: flex; justify-content: center; align-items: center; color: #888 }
+.image-field                                                { min-height: 150px; position: relative; padding: 0; overflow: hidden; background: #fafafa }
+.image-field > *                                            { position: absolute; top: 0; right: 0; width: 100%; height: 100% }
+.image-field .handler                                       { z-index: 10; cursor: pointer; }
+.image-field input                                          { display: none; }
+.image-field .preview, .image-field .placeholder            { overflow: hidden; display: flex; align-items: center; justify-content: center; align-content: center; }
+.image-field .placeholder                                   { color: #888; padding: 20px }
+.image-field .placeholder i                                 { font-size: 20px; margin-right: 10px }
+.image-field .clear                                         { z-index: 15; width: auto; height: auto; background: #ccc; color: #000; opacity: 0.5; padding: 6px 10px; cursor: pointer; border-radius: 0 0 0 3px; }
+.image-field:not(.has-image) .clear,
+.image-field.has-image .placeholder                         { display: none }
+.image-field .clear:hover                                   { background: #b1dbff; }
 
-.images-field input                                                     { display: none; }
 
-.images-field .thumbs                                                   { margin-right: 10px; justify-content: flex-start; align-items: flex-start; align-content: flex-start; flex-wrap: wrap; }
-.images-field .thumbs:empty                                             { display: none }
+/* .pictures-field                                             { display: flex; }
+.pictures-field .box                                        { border-radius: 2px; }
+.pictures-field > *                                         { display: flex; justify-content: center; align-items: center; color: #888 }
 
-.images-field .thumb                                                    { margin: 0 5px 5px 0; height: 145px; border: 1px solid #999; background: #ccc; }
+.pictures-field input                                       { display: none; }
 
-.images-field .thumb .image                                             { height: 120px; width: 120px; display: flex; justify-content: center; align-items: center; }
-.images-field .thumb .spinner                                           { width: 40px; height: 40px; margin-top: 29px }
+.pictures-field .thumbs                                     { margin-right: 10px; justify-content: flex-start; align-items: flex-start; align-content: flex-start; flex-wrap: wrap; }
+.pictures-field .thumbs:empty                               { display: none }
 
-.images-field .thumb .ops                                               { background: #fff; text-align: center; }
-.images-field .thumb .ops span                                          { border-right: 1px solid #eee; height: 23px; width: 30px; font-size: 14px; line-height: 23px; cursor: pointer; }
-.images-field .thumb .ops span.remove                                   { color: #b00; border-right: 0 }
-.images-field .thumb.has-comment .ops span.desc                         { background: #67bf59; color: #fff }
+.pictures-field .thumb                                      { margin: 0 5px 5px 0; height: 145px; border: 1px solid #999; background: #ccc; }
 
-.images-field .thumb:not(.processing) .spinner,
-.images-field .thumb.processing .preview,
-.images-field .thumb.processing .ops                                    { display: none }
+.pictures-field .thumb .picture                             { height: 120px; width: 120px; display: flex; justify-content: center; align-items: center; }
+.pictures-field .thumb .spinner                             { width: 40px; height: 40px; margin-top: 29px }
 
-.images-field .add                                                      { width: 110px; height: 145px; border: 1px solid #bbb; cursor: pointer; flex-shrink: 0 }
-.images-field .add span                                                 { font-size: 30px; }
+.pictures-field .thumb .ops                                 { background: #fff; text-align: center; }
+.pictures-field .thumb .ops span                            { border-right: 1px solid #eee; height: 23px; width: 30px; font-size: 14px; line-height: 23px; cursor: pointer; }
+.pictures-field .thumb .ops span.remove                     { color: #b00; border-right: 0 }
+.pictures-field .thumb.has-comment .ops span.desc           { background: #67bf59; color: #fff }
+
+.pictures-field .thumb:not(.processing) .spinner,
+.pictures-field .thumb.processing .preview,
+.pictures-field .thumb.processing .ops                      { display: none }
+
+.pictures-field .add                                        { width: 110px; height: 145px; border: 1px solid #bbb; cursor: pointer; flex-shrink: 0 }
+.pictures-field .add span                                   { font-size: 30px; } */

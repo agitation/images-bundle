@@ -14,9 +14,9 @@ use Agit\ApiBundle\Annotation\Property\ObjectType;
 /**
  * @Annotation
  */
-class ImageType extends ObjectType
+class PictureType extends ObjectType
 {
-    protected $class = 'Image';
+    protected $class = 'Picture';
 
     protected $minHeight = null;
 

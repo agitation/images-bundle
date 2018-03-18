@@ -1,6 +1,21 @@
-<template id="agit-images-admin-field">
-    <div class="images-field">
-        <input type="file" multiple accept="image/*">
+<template id="ag-admin-img">
+    <div class="image-field form-control">
+        <div class="handler"></div>
+        <input type="file" accept="image/*">
+        <div class="preview">
+            <img alt="">
+        </div>
+        <div class="placeholder">
+            <i class="fa fa-image"></i>
+            <span>{{ t("Please drag an image into this field, or click to select one.") }}</span>
+        </div>
+        <div class="clear">{{ t("remove image") }}</div>
+    </div>
+
+{#
+
+    <div class="pictures-field">
+        <input type="file" multiple accept="picture/*">
 
         <div class="thumbs"></div>
 
@@ -10,7 +25,7 @@
     </div>
 
     <div class="thumb box processing">
-        <div class="image">
+        <div class="picture">
             <div class="spinner"></div>
             <canvas class="preview" height="110" width="110"></canvas>
         </div>
@@ -19,13 +34,14 @@
             <span class="fa fa-search enlarge" title="{{ t("show large preview") }}"></span>
             <span class="fa fa-rotate-right rotate" title="{{ t("rotate right by 90 degrees") }}"></span>
             <span class="fa fa-comment desc" title="{{ t("edit description") }}"></span>
-            <span class="fa fa-remove remove" title="{{ t("remove image") }}"></span>
+            <span class="fa fa-remove remove" title="{{ t("remove picture") }}"></span>
         </div>
     </div>
 
-    <div class="large-image">
+    <div class="large-picture">
         <img src="" alt="">
     </div>
 
     <span class="modal-header">{{ t("Image description") }}</span>
+#}
 </template>

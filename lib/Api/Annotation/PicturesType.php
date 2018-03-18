@@ -12,7 +12,7 @@ namespace Agit\ImagesBundle\Api\Annotation;
 /**
  * @Annotation
  */
-class ImagesType extends ImageType
+class PicturesType extends PictureType
 {
     protected $minCount = null;
 

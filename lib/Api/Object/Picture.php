@@ -18,7 +18,7 @@ use Agit\MultilangBundle\Api\Annotation\MultilangStringType;
 /**
  * @Object\Object(namespace="admin.v1")
  */
-class Image extends AbstractEntityObject
+class Picture extends AbstractEntityObject
 {
     use IdTrait;
 
