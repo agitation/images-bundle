@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /*
  * @package    agitation/images-bundle
  * @link       http://github.com/agitation/images-bundle
@@ -37,10 +38,14 @@ class ImageValidator extends AbstractValidator
     public function validate($value, $minWidth = null, $maxWidth = null, $minHeight = null, $maxHeight = null, $types = [], $maxSize = 500000)
     {
         if (!is_string($value))
-            throw new BadImageException("String expected!");
+        {
+            throw new BadImageException('String expected!');
+        }
 
         if (strlen($value) > $maxSize)
-            throw new BadImageException(sprintf(Translate::t("The image must not be larger than %s bytes."), $maxSize));
+        {
+            throw new BadImageException(sprintf(Translate::t('The image must not be larger than %s bytes.'), $maxSize));
+        }
 
         try
         {

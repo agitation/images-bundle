@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /*
  * @package    agitation/images-bundle
  * @link       http://github.com/agitation/images-bundle
@@ -10,7 +11,6 @@ declare(strict_types=1);
 namespace Agit\ImagesBundle\Service;
 
 use Agit\ImagesBundle\Exception\BadImageException;
-use Agit\IntlBundle\Tool\Translate;
 use Exception;
 use Imagick;
 
